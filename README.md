@@ -22,3 +22,6 @@ This is a simple Discord bot designed to fetch YouTube links based on user-provi
 4. Update `.env` with your own credentials.
 
 5. Start your bot
+
+## Bot Invite Link
+- [TubeBot](https://discord.com/oauth2/authorize?scope=bot&permissions=8&client_id=1120947722090975294)
