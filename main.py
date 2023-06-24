@@ -1,4 +1,4 @@
-import discord
+import discord, requests
 from discord.ext import commands
 import googleapiclient.discovery
 
@@ -42,5 +42,26 @@ async def on_message(message):
         await message.channel.send(response)
 
     await bot.process_commands(message)
+
+
+# JOKE Command
+@bot.command()
+async def joke(ctx):
+     # Fetch a random dark joke from the API
+    response = requests.get('https://v2.jokeapi.dev/joke/Dark')
+    data = response.json()
+
+    # Check if the response contains a single or two-part joke
+    if data['type'] == 'single':
+        joke = data['joke']
+    elif data['type'] == 'twopart':
+        setup = data['setup']
+        delivery = data['delivery']
+        joke = f"{setup}\n{delivery}"
+    else:
+        joke = "Sorry, I couldn't fetch a dark joke."
+
+    # Send the joke to the Discord channel
+    await ctx.send(joke)
 
 bot.run("DISCORD_BOT_TOKEN")
