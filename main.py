@@ -12,6 +12,8 @@ youtube = googleapiclient.discovery.build("youtube", "v3", developerKey=api_key)
 @bot.event
 async def on_ready():
     print(f"Logged in as {bot.user.name}")
+    activity = discord.Game(name="ping for help")
+    await bot.change_presence(activity=activity)
 
 @bot.command(name='yt')
 async def search(ctx, *, query):
