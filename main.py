@@ -11,7 +11,7 @@ youtube = googleapiclient.discovery.build("youtube", "v3", developerKey=api_key)
 
 @bot.event
 async def on_ready():
-    print("Bot is ready.")
+    print(f"Logged in as {bot.user.name}")
 
 @bot.command(name='yt')
 async def search(ctx, *, query):
