@@ -16,6 +16,10 @@ This is a simple Discord bot designed to fetch YouTube links based on user-provi
    ```powershell
    pip install google-api-python-client
    ```
+    - requests
+   ```powershell
+   pip install requests
+   ```
    
 3. Create a new file called `.env` and copy the format from `.env.example` (or you can just rename `.env.example`)
 
