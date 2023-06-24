@@ -40,7 +40,7 @@ async def on_message(message):
         return
 
     if bot.user.mentioned_in(message):
-        response = "type in `!yt <search query>` to fetch links"
+        response = "type in :\n`!yt <search query>` to fetch links. \n`!joke` for dark jokes."
         await message.channel.send(response)
 
     await bot.process_commands(message)
