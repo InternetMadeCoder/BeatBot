@@ -4,7 +4,7 @@ This is a simple Discord bot designed to fetch YouTube links based on user-provi
 ## How to setup
 1. Clone the repository to the current directory.
    ```powershell
-   git clone https://github.com/gattuwu/TubeBot.git
+   https://github.com/InternetMadeCoder/TubeBot.git
    ```
    
 2. Install the following packages.
