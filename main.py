@@ -6,7 +6,7 @@ intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix="!", intents=intents)
 
-YT_API_KEY = "YOUTUBE_API_KEY"
+YOUTUBE_API_KEY = "YOUTUBE_API_KEY"
 youtube = googleapiclient.discovery.build("youtube", "v3", developerKey=api_key)
 
 @bot.event
