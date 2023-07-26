@@ -1,4 +1,4 @@
-# TubeBot
+# BeatBot
 This is a simple Discord bot designed to fetch YouTube links based on user-provided search queries. It utilizes the YouTube Data API to perform a search and retrieve the most relevant video. When a user sends a command in the format `!yt <search query>`, the bot will search for videos matching the query and provide a link to the top result. If a video is found, the bot will respond with the YouTube link. If no video is found, it will inform the user accordingly. The bot enhances the Discord server by allowing users to easily access and share YouTube content within the community.
 
 ## How to setup
