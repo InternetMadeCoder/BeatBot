@@ -6,7 +6,7 @@ intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix="!", intents=intents)
 
-api_key = "YOUTUBE_API_KEY"
+YT_API_KEY = "YOUTUBE_API_KEY"
 youtube = googleapiclient.discovery.build("youtube", "v3", developerKey=api_key)
 
 @bot.event
@@ -33,17 +33,49 @@ async def search(ctx, *, query):
     else:
         await ctx.send("No video found.")
 
-# responds on ping
+SPOTIFY_CLIENT_ID = 'SPOTIFY_CLIENT_ID'
+SPOTIFY_CLIENT_SECRET = 'SPOTIFY_CLIENT_SECRET'
+
+def get_spotify_token():
+    url = 'https://accounts.spotify.com/api/token'
+    data = {
+        'grant_type': 'client_credentials'
+    }
+    response = requests.post(url, data=data, auth=(SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET))
+    return response.json()['access_token']
+    
 @bot.event
 async def on_message(message):
     if message.author == bot.user:
         return
 
+    # responds on ping
     if bot.user.mentioned_in(message):
         response = "type in :\n`!yt <search query>` to fetch links. \n`!joke` for dark jokes."
         await message.channel.send(response)
 
     await bot.process_commands(message)
+
+    if message.content.startswith('!sp '):
+            search_query = message.content[4:]
+            access_token = get_spotify_token()
+            headers = {
+                'Authorization': f'Bearer {access_token}'
+            }
+            params = {
+                'q': search_query,
+                'type': 'track',
+                'limit': 1
+            }
+            response = requests.get('https://api.spotify.com/v1/search', headers=headers, params=params)
+            data = response.json()
+            if 'tracks' in data and 'items' in data['tracks'] and len(data['tracks']['items']) > 0:
+                track = data['tracks']['items'][0]
+                song_name = track['name']
+                spotify_url = track['external_urls']['spotify']
+                await message.channel.send(f"Here's the Spotify link for '{song_name}': {spotify_url}")
+            else:
+                await message.channel.send("Sorry, couldn't find any matching song.")
 
 
 # JOKE Command
