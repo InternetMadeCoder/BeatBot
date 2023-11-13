@@ -28,4 +28,4 @@ This is a simple Discord bot designed to fetch YouTube links based on user-provi
 5. Start your bot
 
 ## Bot Invite Link
-- [TubeBot](https://discord.com/oauth2/authorize?scope=bot&permissions=8&client_id=1120947722090975294)
+- [BeatBot](https://discord.com/oauth2/authorize?scope=bot&permissions=8&client_id=1120947722090975294)
